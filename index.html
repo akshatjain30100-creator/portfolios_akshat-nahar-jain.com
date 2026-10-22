@@ -1,977 +1,1134 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="dark">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>Akshat Nahar | Portfolio</title>
-  <link rel="icon" type="image/png" href="IMG-20260523-WA0003.jpg">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <title>Akshat Nahar Jain| Portfolio</title>
+  <link rel="icon" type="image/png" href="IMG-20260523-WA0003.jpg" />
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              cyan: '#04c5fa',
+              blue: '#4f46e5',
+              pink: '#ec4899',
+              darkBg: '#08080e',
+              glassCard: 'rgba(18, 18, 28, 0.75)',
+            }
+          },
+          animation: {
+            'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+            'float': 'float 6s ease-in-out infinite',
+            'glow': 'glow 3s ease-in-out infinite alternate',
+          },
+          keyframes: {
+            float: {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-12px)' },
+            },
+            glow: {
+              '0%': { boxShadow: '0 0 15px rgba(4, 197, 250, 0.2)' },
+              '100%': { boxShadow: '0 0 35px rgba(4, 197, 250, 0.6)' },
+            }
+          }
+        }
+      }
+    }
+  </script>
+
   <style>
-    /* Reset & Cross-Platform (Apple + Android) System Styles */
-    * { 
-      margin: 0; 
-      padding: 0; 
-      box-sizing: border-box; 
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji"; 
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      -webkit-tap-highlight-color: transparent;
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #08080e;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: rgba(4, 197, 250, 0.3);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: rgba(4, 197, 250, 0.7);
+    }
+
+    html {
       scroll-behavior: smooth;
     }
-    
-    body { 
-      background: #050508 url('index(1).jpeg') no-repeat center center fixed;
-      background-size: cover;
-      color: #f8fafc; 
-      line-height: 1.6; 
-      padding: 0;
-      overflow-x: hidden;
-      width: 100%;
+
+    /* Glassmorphic Cards */
+    .glass-card {
+      background: rgba(18, 18, 28, 0.75);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
     }
 
-    /* Modern Glass Container Backdrop with Neon Border Glow */
-    .glass-panel {
-      background: rgba(12, 12, 16, 0.75);
+    .glass-nav {
+      background: rgba(8, 8, 14, 0.85);
       backdrop-filter: blur(20px);
       -webkit-backdrop-filter: blur(20px);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-      transition: all 0.3s ease;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .glass-panel:hover {
-      border-color: rgba(4, 197, 250, 0.3);
-      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.7), 0 0 25px rgba(4, 197, 250, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.15);
-    }
-
-    /* Header Styling */
-    header { 
-      padding: 100px 16px 80px; 
-      text-align: center;
-      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(4,197,250,0.15)), url('index.jpeg') no-repeat center center;
-      background-size: cover; 
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      position: relative;
-    }
-
-    .profile-glow-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 24px;
-    }
-
-    .profile-glow-container::after {
-      content: '';
-      position: absolute;
-      top: -4px; left: -4px; right: -4px; bottom: -4px;
-      background: linear-gradient(45deg, #04c5fa, #4f46e5, #c20a75, #04c5fa);
-      border-radius: 50%;
-      z-index: -1;
-      animation: glowingBorder 6s linear infinite;
-      background-size: 400%;
-      opacity: 0.8;
-    }
-
-    @keyframes glowingBorder {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    .profile-img {
-      width: 170px;
-      height: 170px;
-      border-radius: 50%;
-      object-fit: cover;
-      object-position: center;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
-      display: block;
-      border: 4px solid #0f0f13;
-    }
-
-    h1 { 
-      font-size: 3rem; 
-      font-weight: 800;
-      margin-bottom: 12px; 
-      letter-spacing: -0.5px;
-      background: linear-gradient(135deg, #ffffff 30%, #04c5fa 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      text-shadow: 0 10px 30px rgba(4, 197, 250, 0.2);
-    }
-
-    h2 { 
-      font-size: 2.2rem; 
-      margin-bottom: 24px; 
-      text-align: center; 
-      font-weight: 700;
-      letter-spacing: -0.3px;
-      background: linear-gradient(135deg, #ffffff 40%, #04c5fa 100%);
+    /* Neon Gradient Glow Text */
+    .text-gradient {
+      background: linear-gradient(135deg, #ffffff 30%, #04c5fa 70%, #818cf8 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
     }
 
-    p, .about-text { 
-      color: #cbd5e1; 
-      max-width: 760px; 
-      margin: 0 auto 24px; 
-      font-size: 1.05rem;
+    .text-gradient-accent {
+      background: linear-gradient(135deg, #04c5fa 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
     }
 
-    /* Typing Subtitle Effect */
-    .typing-badge {
-      display: inline-block;
-      padding: 8px 18px;
-      background: rgba(4, 197, 250, 0.12);
-      border: 1px solid rgba(4, 197, 250, 0.3);
-      border-radius: 30px;
-      color: #04c5fa;
-      font-weight: 600;
-      font-size: 0.95rem;
-      margin-top: 8px;
-      box-shadow: 0 0 15px rgba(4, 197, 250, 0.2);
-    }
-
-    /* Hamburger Menu Button Positioned at Top Right */
-    .menu-toggle {
-      position: fixed;
-      top: 24px;
-      right: 24px;
-      background: rgba(15, 15, 20, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      width: 50px;
-      height: 50px;
-      border-radius: 14px;
-      cursor: pointer;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      gap: 6px;
-      z-index: 1001;
-      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.5);
-    }
-
-    .menu-toggle:hover {
-      background: rgba(4, 197, 250, 0.2);
-      border-color: #04c5fa;
-      transform: scale(1.05);
-    }
-
-    .menu-toggle span {
-      display: block;
-      width: 24px;
-      height: 2px;
-      background-color: #ffffff;
-      border-radius: 2px;
-      transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s;
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: translateY(8px) rotate(45deg);
-      background-color: #04c5fa;
-    }
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-8px) rotate(-45deg);
-      background-color: #04c5fa;
-    }
-
-    /* Fullscreen Overlay Menu Layout */
-    .overlay-menu {
+    /* Floating particles background canvas */
+    #bgCanvas {
       position: fixed;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: rgba(8, 8, 12, 0.98);
-      backdrop-filter: blur(30px);
-      -webkit-backdrop-filter: blur(30px);
-      z-index: 1000;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
       pointer-events: none;
-      transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-      padding: 24px;
+      z-index: 0;
     }
 
-    .overlay-menu.open {
+    /* Image Lightbox Smooth Transition */
+    .lightbox-modal {
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+    .lightbox-modal.active {
       opacity: 1;
-      pointer-events: auto;
-    }
-
-    .overlay-title {
-      font-size: 1.3rem;
-      text-transform: uppercase;
-      letter-spacing: 3px;
-      color: #04c5fa;
-      margin-bottom: 35px;
-      font-weight: 700;
-      text-shadow: 0 0 20px rgba(4, 197, 250, 0.4);
-    }
-
-    .menu-links {
-      display: flex;
-      flex-direction: column;
-      gap: 14px;
-      width: 100%;
-      max-width: 380px;
-    }
-
-    /* Button Layout stylings */
-    .btn-container {
-      margin-top: 24px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      width: 100%;
-      max-width: 960px;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .btn { 
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px 22px; 
-      background: linear-gradient(135deg, #4f46e5, #6366f1); 
-      color: #ffffff; 
-      text-decoration: none; 
-      border-radius: 12px; 
-      font-weight: 600;
-      font-size: 0.95rem;
-      min-height: 48px;
-      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-      text-align: center;
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
-    }
-
-    .btn:hover { 
-      transform: translateY(-3px) scale(1.02);
-      box-shadow: 0 8px 25px rgba(79, 70, 229, 0.6);
-      border-color: rgba(255, 255, 255, 0.3);
-    }
-    
-    .btn:active {
-      transform: translateY(0);
-    }
-
-    .nav-btn {
-      background: linear-gradient(135deg, rgba(4, 197, 250, 0.15), rgba(4, 197, 250, 0.3));
-      color: #04c5fa;
-      border: 1px solid rgba(4, 197, 250, 0.35);
-      backdrop-filter: blur(10px);
-      box-shadow: 0 4px 15px rgba(4, 197, 250, 0.15);
-    }
-
-    .nav-btn:hover {
-      background: linear-gradient(135deg, #04c5fa, #02a3d0);
-      color: #050508;
-      box-shadow: 0 8px 25px rgba(4, 197, 250, 0.4);
-      border-color: #04c5fa;
-    }
-
-    /* Content Layout Containers */
-    section { 
-      padding: 50px 24px; 
-      max-width: 1080px; 
-      margin: 30px auto; 
-      border-radius: 20px;
-    }
-    
-    section#about {
-      margin-top: 50px;
-    }
-
-    /* Adaptive Grid */
-    .grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
-      gap: 24px; 
-      margin-top: 28px;
-    }
-
-    .card { 
-      background: rgba(18, 18, 24, 0.7); 
-      padding: 28px; 
-      border-radius: 16px; 
-      border: 1px solid rgba(255, 255, 255, 0.08); 
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 3px;
-      background: linear-gradient(90deg, transparent, #04c5fa, transparent);
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .card:hover {
-      border-color: rgba(4, 197, 250, 0.4);
-      transform: translateY(-6px);
-      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 20px rgba(4, 197, 250, 0.2);
-    }
-
-    .card:hover::before {
-      opacity: 1;
-    }
-
-    .card h3 {
-      font-size: 1.35rem;
-      margin-bottom: 10px;
-      color: #04c5fa;
-      font-weight: 700;
-    }
-
-    .card p {
-      font-size: 0.98rem;
-      color: #cbd5e1;
-      margin-bottom: 24px;
-      text-align: left;
-    }
-
-    .card .btn {
-      align-self: flex-start;
-      margin-top: auto;
-      width: auto;
-    }
-
-    /* Skill pill layout */
-    .skills-container { 
-      display: flex; 
-      flex-wrap: wrap; 
-      gap: 12px; 
-      justify-content: center; 
-      padding: 16px 0;
-    }
-
-    .skill { 
-      background: rgba(4, 197, 250, 0.1); 
-      color: #04c5fa;
-      border: 1px solid rgba(4, 197, 250, 0.3);
-      padding: 10px 20px; 
-      border-radius: 30px; 
-      font-size: 0.95rem; 
-      font-weight: 600;
-      transition: all 0.3s ease;
-      box-shadow: 0 4px 15px rgba(4, 197, 250, 0.1);
-    }
-
-    .skill:hover {
-      background: rgba(4, 197, 250, 0.25);
-      transform: translateY(-3px) scale(1.05);
-      box-shadow: 0 6px 20px rgba(4, 197, 250, 0.3);
-      border-color: #04c5fa;
-    }
-
-    /* Contact Links */
-    #contact p {
-      text-align: center;
-      font-size: 1.1rem;
-    }
-    #contact a {
-      color: #04c5fa;
-      text-decoration: none;
-      font-weight: 700;
-      border-bottom: 2px dashed rgba(4, 197, 250, 0.5);
-      transition: all 0.2s ease;
-    }
-    #contact a:hover {
-      color: #ffffff;
-      border-bottom-style: solid;
-      border-color: #04c5fa;
-    }
-
-    /* High-Visibility Expanded Gallery Grid */
-    .gallery-grid { 
-      display: grid; 
-      grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); 
-      gap: 24px; 
-      padding: 16px 0;
-    }
-
-    .gallery-grid img {
-      width: 100%;
-      height: 420px; 
-      object-fit: cover;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    }
-
-    .gallery-grid img:hover {
-      transform: scale(1.03) translateY(-6px);
-      border-color: #04c5fa;
-      box-shadow: 0 20px 45px rgba(4, 197, 250, 0.35);
-    }
-
-    /* Lightbox Modal System */
-    .lightbox {
-      display: none;
-      position: fixed;
-      z-index: 9999;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(5, 5, 8, 0.95);
-      backdrop-filter: blur(15px);
-      justify-content: center;
-      align-items: center;
-      animation: fadeIn 0.3s ease;
-    }
-
-    @keyframes fadeIn {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    .lightbox img {
-      max-width: 90%;
-      max-height: 85%;
-      object-fit: contain;
-      border-radius: 12px;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-      box-shadow: 0 0 50px rgba(4, 197, 250, 0.3);
-      animation: scaleUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    @keyframes scaleUp {
-      from { transform: scale(0.9); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 28px;
-      right: 32px;
-      color: #ffffff;
-      font-size: 2.5rem;
-      font-weight: 300;
-      cursor: pointer;
-      line-height: 1;
-      width: 50px;
-      height: 50px;
-      background: rgba(255, 255, 255, 0.1);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(255, 255, 255, 0.2);
-    }
-
-    .lightbox-close:hover {
-      background: #04c5fa;
-      color: #050508;
-      border-color: #04c5fa;
-      transform: rotate(90deg);
-    }
-
-    /* Video Layout Grid */
-    .video-grid { 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 35px; 
-      width: 100%;
-    }
-
-    .video-wrapper {
-      width: 100%;
-      max-width: 840px; 
-      background: rgba(18, 18, 24, 0.7);
-      padding: 20px;
-      border-radius: 18px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      text-align: center;
-      box-shadow: 0 12px 35px rgba(0,0,0,0.5);
-      transition: transform 0.3s ease, border-color 0.3s ease;
-    }
-
-    .video-wrapper:hover {
-      border-color: rgba(4, 197, 250, 0.4);
-      transform: translateY(-4px);
-    }
-
-    .video-wrapper video {
-      width: 100%;
-      height: auto; 
-      border-radius: 12px;
-      outline: none;
-      background: #000000;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: 0 8px 25px rgba(0,0,0,0.6);
-    }
-
-    .video-title {
-      margin-top: 16px;
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #04c5fa;
-    }
-
-    /* Social Media Layout Grid */
-    #social-media { 
-      padding: 50px 24px; 
-      max-width: 1080px; 
-      margin: 20px auto; 
-    }
-    
-    #social-media .card { 
-      background: rgba(18, 18, 24, 0.7); 
-      padding: 24px; 
-      border-radius: 16px; 
-      border: 1px solid rgba(255, 255, 255, 0.08); 
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-    }
-    
-    #social-media .card img {
-      width: 100%;
-      height: auto;
-      max-height: 280px; 
-      object-fit: contain;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      background: rgba(0, 0, 0, 0.3);
-      padding: 10px;
-    }
-    
-    #social-media .card .btn {
-      width: 100%;
-    }
-
-    /* Map Layout Wrappers */
-    .map-wrapper {
-      padding: 50px 24px;
-      max-width: 1080px;
-      margin: 20px auto;
-    }
-    
-    .map-container {
-      padding: 16px; 
-      background: rgba(18, 18, 24, 0.7);
-      border: 1px solid rgba(255, 255, 255, 0.08); 
-      border-radius: 18px; 
-      box-shadow: 0 12px 35px rgba(0,0,0,0.5); 
-      width: 100%; 
-      max-width: 760px;
-      margin: 0 auto;
-    }
-    
-    iframe {
-      border: 0; 
-      border-radius: 12px;
-      width: 100%;
-      height: 420px;
-      display: block;
-      filter: invert(90%) hue-rotate(180deg) contrast(95%);
-    }
-
-    /* Certificates Gallery Layout Block */
-    #certificates-gallery { 
-      padding: 50px 24px; 
-      max-width: 1080px; 
-      margin: 20px auto; 
-    }
-    
-    .image-gallery {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 35px;
-    }
-    
-    .image-gallery img {
-      width: 100%;
-      max-width: 880px; 
-      height: auto;
-      object-fit: contain;
-      border-radius: 16px;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
-      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-      cursor: pointer;
-    }
-
-    .image-gallery img:hover {
-      transform: scale(1.02);
-      box-shadow: 0 20px 50px rgba(4, 197, 250, 0.3);
-      border-color: #04c5fa;
-    }
-
-    /* Footer Container */
-    footer { 
-      background: #040406; 
-      padding: 45px 16px; 
-      text-align: center; 
-      color: #94a3b8; 
-      font-size: 0.95rem; 
-      font-weight: 500;
-      margin-top: 100px;
-      border-top: 1px solid rgba(255, 255, 255, 0.08);
-      box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.05);
-    }
-
-    footer span {
-      color: #04c5fa;
-      font-weight: 600;
-    }
-
-    /* Media Queries for Mobile/Tablet Optimization (iOS & Android) */
-    @media (max-width: 768px) {
-      header {
-        padding: 80px 16px 50px;
-      }
-      
-      h1 {
-        font-size: 2.2rem;
-      }
-
-      h2 {
-        font-size: 1.7rem;
-      }
-
-      p, .about-text {
-        font-size: 1rem;
-      }
-
-      .btn-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-      }
-
-      .btn {
-        width: 100%;
-        padding: 10px 14px;
-        font-size: 0.88rem;
-      }
-      
-      section {
-        padding: 35px 16px;
-        margin: 20px 12px;
-      }
-      
-      .card .btn {
-        width: 100%;
-      }
-    }
-
-    @media (max-width: 420px) {
-      .btn-container {
-        grid-template-columns: 1fr;
-      }
-      .menu-toggle {
-        top: 16px;
-        right: 16px;
-      }
+      visibility: visible;
     }
   </style>
 </head>
-<body>
+<body class="bg-[#08080e] text-slate-100 font-sans antialiased overflow-x-hidden selection:bg-[#04c5fa]/30 selection:text-[#04c5fa]">
 
-<!-- Three Lines Menu Icon Trigger -->
-<button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation">
-  <span></span>
-  <span></span>
-  <span></span>
-</button>
+  <!-- Animated Particle Background Canvas -->
+  <canvas id="bgCanvas"></canvas>
 
-<!-- Fullscreen Navigation Menu Overlay -->
-<div class="overlay-menu" id="overlayMenu">
-  <div class="overlay-title"><i class="fa-solid fa-compass"></i> Connect & Discover</div>
-  <div class="menu-links">
-    <a href="#projects" class="btn overlay-close-trigger"><i class="fa-solid fa-code"></i> View Projects</a>
-    <a href="https://www.linkedin.com/in/akshatnahar-jain-6b2a6a31a?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="btn" style="background:linear-gradient(135deg, #0A66C2, #004182);"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
-    <a href="https://www.instagram.com/akshatnahar.in/" target="_blank" class="btn" style="background:linear-gradient(135deg, #c20a75, #833ab4);"><i class="fa-brands fa-instagram"></i> Instagram</a>
-    <a href="https://www.facebook.com/profile.php?id=61576915678488" target="_blank" class="btn" style="background:linear-gradient(135deg, #1877f2, #0d5cb6);"><i class="fa-brands fa-facebook"></i> Facebook</a>
-    <a href="https://www.threads.com/@akshatnahar.in?xmt=AQF0u7AvjLYYPd84nhJvgGQkf-nL7xa7nonDy8b-OjSsuF4" target="_blank" class="btn" style="background:linear-gradient(135deg, #292828, #111111);"><i class="fa-brands fa-threads"></i> Threads</a>
-    <a href="https://x.com/AkshatJain81893" target="_blank" class="btn" style="background:linear-gradient(135deg, #1da1f2, #0d8ecf);"><i class="fa-brands fa-x-twitter"></i> X (Twitter)</a>
-  </div>
-</div>
+  <!-- Navigation Bar -->
+  <nav class="fixed top-0 left-0 right-0 z-50 glass-nav transition-all duration-300" id="navbar">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+      <!-- Logo / Brand -->
+      <a href="#hero" class="flex items-center gap-3 group">
+        <div class="relative w-10 h-10 rounded-full overflow-hidden p-[2px] bg-gradient-to-r from-[#04c5fa] to-indigo-500">
+          <img src="IMG-20260523-WA0003.jpg" alt="Akshat Nahar" class="w-full h-full object-cover rounded-full group-hover:scale-110 transition-transform duration-300" onerror="this.src='https://placehold.co/100x100/08080e/04c5fa?text=AN'" />
+        </div>
+        <span class="font-bold text-xl tracking-tight text-white group-hover:text-[#04c5fa] transition-colors">
+          Akshat<span class="text-[#04c5fa]">Nahar</span>
+        </span>
+      </a>
 
-<header>
-  <div class="profile-glow-container">
-    <img src="IMG-20260523-WA0003.jpg" alt="Akshat Nahar" class="profile-img">
-  </div>
-  <h1>Hi, I'm Akshat Nahar</h1>
-  <div class="typing-badge"><i class="fa-solid fa-terminal"></i> IT Student &bull; Developer &bull; Analyst &bull; Poet</div>
-</header>
-
-<section id="about" class="glass-panel">
-  <div class="btn-container" style="margin-bottom: 35px; margin-top: 0;">
-    <a href="#about" class="btn nav-btn"><i class="fa-solid fa-house"></i> Home</a>  
-    <a href="#photo" class="btn nav-btn"><i class="fa-solid fa-images"></i> Photo Gallery</a>
-    <a href="#Video" class="btn nav-btn"><i class="fa-solid fa-video"></i> Video Gallery</a>
-    <a href="#certificates" class="btn nav-btn"><i class="fa-solid fa-award"></i> Certificates</a>
-    <a href="#social-media" class="btn nav-btn"><i class="fa-solid fa-share-nodes"></i> Social Media</a>
-  </div>
-  
-  <h2>About Me</h2>
-  <p class="about-text" style="text-align: left;">
-    Hello, I'm Akshat Nahar a BCA student[cite: 1]. I'm a poet who writes beautiful lines that touches everyone.
-    As, an IT student specializing in Technology Field. I'm an optimistic person Truly focus on Design
-    tools Canva & InShot and programming software like Visual Studio Code for C/C++, PyCharm for Python 
-    and MYSQL(RDBMS)[cite: 1]. Now I'm giving myself in programming and now I'm learning C++, Java[cite: 1]. And already
-    have knowledge in C language, Python and MYSQL[cite: 1].
-  </p>
-
-  <h3 style="color: #04c5fa; margin: 24px 0 12px; font-size: 1.2rem;"><i class="fa-solid fa-bullseye"></i> Goals</h3>
-  <p style="text-align: left; margin-bottom: 8px;"><i class="fa-solid fa-chevron-right" style="color: #04c5fa; font-size: 0.8rem; margin-right: 8px;"></i>Full Stack Development</p>
-  <p style="text-align: left; margin-bottom: 16px;"><i class="fa-solid fa-chevron-right" style="color: #04c5fa; font-size: 0.8rem; margin-right: 8px;"></i>Artificial Intelligence Machine Learning Engineer</p>
-
-  <h3 style="color: #04c5fa; margin: 24px 0 12px; font-size: 1.2rem;"><i class="fa-solid fa-layer-group"></i> Skills Highlights</h3>
-  <p style="text-align: left; margin-bottom: 6px;">• <b>Python Pandas and Matplotlib</b> — Created a project for CBSE practical file[cite: 1]</p>
-  <p style="text-align: left; margin-bottom: 6px;">• <b>RDBMS & MySQL</b> — Relational database management architecture[cite: 1]</p>
-  <p style="text-align: left; margin-bottom: 6px;">• <b>Microsoft Office 365</b> — Professional productivity suite[cite: 1]</p>
-  <p style="text-align: left; margin-bottom: 6px;">• <b>Canva</b> — Designed professional assets like LinkedIn banners[cite: 1]</p>
-  <p style="text-align: left; margin-bottom: 16px;">• <b>InShot</b> — Advanced digital photo & video editing[cite: 1]</p>
-
-  <h3 style="color: #04c5fa; margin: 24px 0 12px; font-size: 1.2rem;"><i class="fa-solid fa-star"></i> Strengths</h3>
-  <div style="display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px;">
-    <span class="skill" style="font-size: 0.9rem; padding: 6px 14px;"><i class="fa-solid fa-comments"></i> Communication Skills</span>
-    <span class="skill" style="font-size: 0.9rem; padding: 6px 14px;"><i class="fa-solid fa-microphone"></i> Public Speaking</span>
-    <span class="skill" style="font-size: 0.9rem; padding: 6px 14px;"><i class="fa-solid fa-chess-king"></i> Leadership</span>
-    <span class="skill" style="font-size: 0.9rem; padding: 6px 14px;"><i class="fa-solid fa-chart-line"></i> Analytical Skills</span>
-    <span class="skill" style="font-size: 0.9rem; padding: 6px 14px;"><i class="fa-solid fa-users"></i> Team Spirit</span>
-  </div>
-</section>
-
-<section id="skills" class="glass-panel">
-  <h2>Technical Expertise</h2>
-  <div class="skills-container">
-    <span class="skill"><i class="fa-brands fa-python"></i> Python</span>
-    <span class="skill"><i class="fa-solid fa-code"></i> C</span>
-    <span class="skill"><i class="fa-solid fa-laptop-code"></i> C++</span>
-    <span class="skill"><i class="fa-solid fa-database"></i> MySQL</span>
-    <span class="skill"><i class="fa-solid fa-table"></i> Pandas</span>
-    <span class="skill"><i class="fa-solid fa-chart-pie"></i> Matplotlib</span>
-    <span class="skill"><i class="fa-solid fa-server"></i> DBMS</span>
-    <span class="skill"><i class="fa-solid fa-comments"></i> Communication</span>
-    <span class="skill"><i class="fa-solid fa-bullhorn"></i> Digital Marketing</span>
-  </div>
-</section>
-
-<section id="projects" class="glass-panel">
-  <h2>Projects</h2>
-  <div class="grid">
-    <div class="card">
-      <div>
-        <h3><i class="fa-brands fa-python" style="color:#04c5fa;"></i> Python Pandas & Matplotlib</h3>
-        <p>CBSE practical file for Class XII containing Python programming implementations[cite: 1].</p>
+      <!-- Desktop Nav Links -->
+      <div class="hidden md:flex items-center gap-1 bg-white/5 p-1.5 rounded-full border border-white/10 backdrop-blur-md">
+        <a href="#about" class="px-4 py-2 rounded-full text-sm font-medium hover:text-[#04c5fa] hover:bg-white/10 transition-all">About</a>
+        <a href="#skills" class="px-4 py-2 rounded-full text-sm font-medium hover:text-[#04c5fa] hover:bg-white/10 transition-all">Skills</a>
+        <a href="#projects" class="px-4 py-2 rounded-full text-sm font-medium hover:text-[#04c5fa] hover:bg-white/10 transition-all">Projects</a>
+        <a href="#gallery" class="px-4 py-2 rounded-full text-sm font-medium hover:text-[#04c5fa] hover:bg-white/10 transition-all">Media Hub</a>
+        <a href="#contact" class="px-4 py-2 rounded-full text-sm font-medium hover:text-[#04c5fa] hover:bg-white/10 transition-all">Contact</a>
       </div>
-      <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_file-i-was-made-for-xiicbsepracticals-containspythonprog-activity-7361578805297061888-xKjB" target="_blank" class="btn" style="background:linear-gradient(135deg, #10b981, #059669);"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Link</a>
-    </div>
-    
-    <div class="card">
-      <div>
-        <h3><i class="fa-solid fa-table-cells" style="color:#04c5fa;"></i> Python Data Handling</h3>
-        <p>BCA Semester 1 technical presentation covering Core Dataframe operations[cite: 1].</p>
-      </div>
-      <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_python-pandas-df-activity-7400154521038974977-4d3U" target="_blank" class="btn" style="background:linear-gradient(135deg, #10b981, #059669);"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Link</a>
-    </div>
-    
-    <div class="card">
-      <div>
-        <h3><i class="fa-solid fa-terminal" style="color:#04c5fa;"></i> User Defined Functions in C</h3>
-        <p>Structured modular logic programming codebase applying recursive operations in C language[cite: 1].</p>
-      </div>
-      <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_python-developer-akshatnaharjain-activity-7417925495008305152-BCc0" target="_blank" class="btn" style="background:linear-gradient(135deg, #10b981, #059669);"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Link</a>
-    </div>
-    
-    <div class="card">
-      <div>
-        <h3><i class="fa-solid fa-database" style="color:#04c5fa;"></i> MYSQL - RDBMS Presentation</h3>
-        <p>Comprehensive relational architecture project guidelines and slide-deck asset documentation[cite: 1].</p>
-      </div>
-      <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_powerpoint-canva-rdbms-activity-7368601724766425088-cF2M" target="_blank" class="btn" style="background:linear-gradient(135deg, #10b981, #059669);"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Link</a>
-    </div>
-    
-    <div class="card">
-      <div>
-        <h3><i class="fa-solid fa-briefcase" style="color:#04c5fa;"></i> TATA Nano Rejuvenation</h3>
-        <p>Corporate brand reinvigoration strategies created for Aryan's Bizhub Club showcase event[cite: 1].</p>
-      </div>
-      <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_on-15th-december-2025-we-presented-tata-activity-7406693428173926401-Jpl5" target="_blank" class="btn" style="background:linear-gradient(135deg, #10b981, #059669);"><i class="fa-solid fa-arrow-up-right-from-square"></i> Open Link</a>
-    </div>
-  </div>
-</section>
 
-<main>
-    <section id="photo" class="glass-panel">
-      <h2>Photo Gallery</h2>
-      <p style="font-size: 1.2rem; text-shadow: 1px 1px 3px rgba(0,0,0,0.8);">
-        Here are the photos related to my academics and subjects[cite: 1].
-      </p>
+      <!-- Action & Toggle Mobile Menu -->
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-gradient-to-r from-[#04c5fa] to-indigo-600 text-slate-950 font-bold text-sm hover:shadow-[0_0_20px_rgba(4,197,250,0.5)] hover:scale-105 active:scale-95 transition-all">
+          <span>Let's Connect</span>
+          <i class="fa-solid fa-paper-plane text-xs"></i>
+        </a>
+
+        <!-- Mobile Menu Hamburger Button -->
+        <button id="menuToggle" class="md:hidden w-11 h-11 rounded-xl bg-white/10 border border-white/10 flex flex-col justify-center items-center gap-1.5 focus:outline-none hover:bg-white/20 transition-all">
+          <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform" id="bar1"></span>
+          <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300" id="bar2"></span>
+          <span class="w-5 h-0.5 bg-white rounded-full transition-all duration-300 transform" id="bar3"></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Drawer Navigation -->
+  <div id="mobileDrawer" class="fixed inset-0 z-40 bg-[#08080e]/95 backdrop-blur-2xl transform translate-x-full transition-transform duration-300 md:hidden flex flex-col justify-center px-8">
+    <div class="flex flex-col gap-6 text-center text-xl font-semibold">
+      <a href="#about" class="mobile-link text-slate-300 hover:text-[#04c5fa] py-2">About Me</a>
+      <a href="#skills" class="mobile-link text-slate-300 hover:text-[#04c5fa] py-2">Skills Matrix</a>
+      <a href="#projects" class="mobile-link text-slate-300 hover:text-[#04c5fa] py-2">Projects</a>
+      <a href="#gallery" class="mobile-link text-slate-300 hover:text-[#04c5fa] py-2">Media & Certificates</a>
+      <a href="#contact" class="mobile-link text-slate-300 hover:text-[#04c5fa] py-2">Get in Touch</a>
       
-      <div class="gallery-grid">
-        <img src="july.jpeg" alt="Academic Photo July" onclick="openLightbox(this.src)">
-        <img src="nov.jpeg" alt="Academic Photo November" onclick="openLightbox(this.src)">
-        <img src="dec.jpeg" alt="Academic Photo December" onclick="openLightbox(this.src)">
-        <img src="jan.jpeg" alt="Academic Photo January" onclick="openLightbox(this.src)">
+      <div class="pt-8 border-t border-white/10 flex justify-center gap-6 text-2xl">
+        <a href="https://www.linkedin.com/in/akshatnahar-jain-6b2a6a31a" target="_blank" class="text-slate-400 hover:text-[#04c5fa]"><i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://github.com/akshatjain30100-creator/C-Language-Prgt" target="_blank" class="text-slate-400 hover:text-[#04c5fa]"><i class="fa-brands fa-github"></i></a>
+        <a href="https://www.instagram.com/akshatnahar.in/" target="_blank" class="text-slate-400 hover:text-[#04c5fa]"><i class="fa-brands fa-instagram"></i></a>
       </div>
-    </section>
-  </main>
-
-  <!-- Interactive Lightbox Markup -->
-  <div id="lightboxModal" class="lightbox" onclick="closeLightbox()">
-    <span class="lightbox-close">&times;</span>
-    <img id="lightboxImg" src="" alt="Enlarged View">
+    </div>
   </div>
 
-<main>
-    <section id="Video" class="glass-panel">
-      <h2>Video Gallery</h2>
-      <p style="font-size: 1.2rem;">Here are the videos related to my academics and subjects[cite: 1].</p>
+  <!-- HERO SECTION -->
+  <section id="hero" class="relative pt-36 pb-20 md:pt-48 md:pb-32 px-4 max-w-7xl mx-auto min-h-screen flex items-center justify-center">
+    <!-- Glow effects behind hero -->
+    <div class="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#04c5fa]/20 rounded-full blur-[120px] pointer-events-none"></div>
+    <div class="absolute bottom-1/4 right-10 w-80 h-80 bg-indigo-600/20 rounded-full blur-[100px] pointer-events-none"></div>
+
+    <div class="text-center relative z-10 max-w-4xl mx-auto flex flex-col items-center">
       
-      <div class="video-grid">
+      <!-- Profile Picture with Animated Neon Ring -->
+      <div class="relative mb-8 group">
+        <div class="absolute -inset-1 rounded-full bg-gradient-to-r from-[#04c5fa] via-indigo-500 to-pink-500 blur-lg opacity-75 group-hover:opacity-100 transition duration-1000 group-hover:duration-200 animate-pulse-slow"></div>
+        <div class="relative w-40 h-40 sm:w-48 sm:h-48 rounded-full overflow-hidden p-1 bg-[#08080e] ring-2 ring-white/20">
+          <img src="IMG-20260523-WA0003.jpg" alt="Akshat Nahar" class="w-full h-full object-cover rounded-full transform group-hover:scale-105 transition-transform duration-500" onerror="this.src='https://placehold.co/200x200/08080e/04c5fa?text=Akshat+Nahar'" />
+        </div>
+        <div class="absolute bottom-2 right-2 bg-emerald-500 w-5 h-5 rounded-full border-4 border-[#08080e]" title="Available for opportunities"></div>
+      </div>
+
+      <!-- Badge -->
+      <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs sm:text-sm font-medium text-[#04c5fa] mb-6 backdrop-blur-md">
+        <span class="w-2 h-2 rounded-full bg-[#04c5fa] animate-ping"></span>
+        <span>BCA Student & Tech Enthusiast</span>
+      </div>
+
+      <!-- Heading -->
+      <h1 class="text-4xl sm:text-6xl md:text-7xl font-extrabold tracking-tight mb-4 leading-none">
+        Hello, I'm <span class="text-gradient">Akshat Nahar</span>
+      </h1>
+
+      <!-- Typing Effect Subtitle -->
+      <div class="text-lg sm:text-2xl font-medium text-slate-300 h-12 flex items-center justify-center mb-8">
+        <span id="typingText" class="border-r-2 border-[#04c5fa] pr-1"></span>
+      </div>
+
+      <!-- Quick Action CTA Buttons -->
+      <div class="flex flex-wrap justify-center items-center gap-4 w-full sm:w-auto">
+        <a href="#projects" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-gradient-to-r from-[#04c5fa] to-indigo-600 text-slate-950 font-bold text-base hover:shadow-[0_0_30px_rgba(4,197,250,0.4)] hover:-translate-y-1 transition-all flex items-center justify-center gap-3">
+          <span>View My Work</span>
+          <i class="fa-solid fa-arrow-down-long"></i>
+        </a>
+        <a href="#contact" class="w-full sm:w-auto px-8 py-4 rounded-2xl glass-card hover:bg-white/10 text-white font-semibold text-base hover:-translate-y-1 transition-all flex items-center justify-center gap-3 border border-white/15">
+          <span>Get In Touch</span>
+          <i class="fa-regular fa-envelope"></i>
+        </a>
+        <button onclick="downloadCV()" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-white/5 hover:bg-white/10 text-[#04c5fa] font-semibold text-base border border-[#04c5fa]/30 hover:border-[#04c5fa] transition-all flex items-center justify-center gap-2">
+          <i class="fa-solid fa-file-arrow-down"></i>
+          <span>Resume / Info</span>
+        </button>
+      </div>
+
+      <!-- Quick Stats Pill -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-8 mt-16 pt-8 border-t border-white/10 w-full max-w-3xl">
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-[#04c5fa]">5+</div>
+          <div class="text-xs sm:text-sm text-slate-400">Featured Projects</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-indigo-400">BCA</div>
+          <div class="text-xs sm:text-sm text-slate-400">Computer Applications</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-pink-400">6+</div>
+          <div class="text-xs sm:text-sm text-slate-400">Tech Skills</div>
+        </div>
+        <div class="text-center">
+          <div class="text-2xl sm:text-3xl font-extrabold text-emerald-400">100%</div>
+          <div class="text-xs sm:text-sm text-slate-400">Dedication</div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about" class="py-20 px-4 max-w-7xl mx-auto relative">
+    <div class="text-center mb-16">
+      <h2 class="text-xs font-bold tracking-widest text-[#04c5fa] uppercase mb-2">Introduction</h2>
+      <h3 class="text-3xl sm:text-4xl font-bold">About <span class="text-gradient">Akshat Nahar</span></h3>
+    </div>
+
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch">
+      <!-- Bio Glass Box -->
+      <div class="lg:col-span-7 glass-card p-8 rounded-3xl flex flex-col justify-between">
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div class="p-3 rounded-2xl bg-[#04c5fa]/10 text-[#04c5fa] text-2xl">
+              <i class="fa-solid fa-user-graduate"></i>
+            </div>
+            <div>
+              <h4 class="text-xl font-bold">Tech Aspirant & Creative Mind</h4>
+              <p class="text-sm text-slate-400">Pursuing BCA | Learning C++, Java, & Web Tech</p>
+            </div>
+          </div>
+
+          <p class="text-slate-300 leading-relaxed mb-6">
+            Hello! I'm <strong class="text-white">Akshat Nahar</strong>, a passionate BCA student dedicated to building robust technology solutions and crafting expressive poetry. As an IT student specializing in technical systems, I bring an optimistic mindset focusing on visual design (Canva & InShot) and programming tools like VS Code, PyCharm, and MySQL.
+          </p>
+
+          <p class="text-slate-300 leading-relaxed mb-6">
+            I have hands-on knowledge in C, Python, and SQL, and am actively expanding my skillset into advanced C++ and Java object-oriented paradigms.
+          </p>
+        </div>
+
+        <!-- Personal Strengths Tags -->
+        <div class="pt-6 border-t border-white/10">
+          <h5 class="text-sm font-semibold text-slate-400 uppercase tracking-wider mb-3">Core Strengths</h5>
+          <div class="flex flex-wrap gap-2">
+            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-comments text-[#04c5fa]"></i> Communication</span>
+            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-microphone text-indigo-400"></i> Public Speaking</span>
+            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-crown text-amber-400"></i> Leadership</span>
+            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-chart-line text-emerald-400"></i> Analytical Skills</span>
+            <span class="px-3.5 py-1.5 rounded-xl bg-white/5 border border-white/10 text-xs font-medium text-slate-200 flex items-center gap-2"><i class="fa-solid fa-people-group text-pink-400"></i> Team Spirit</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Career Goals Cards -->
+      <div class="lg:col-span-5 flex flex-col gap-6">
+        <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-[#04c5fa]/50 transition-all">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-[#04c5fa]/20 to-transparent rounded-bl-full pointer-events-none"></div>
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-indigo-500/10 text-indigo-400 flex items-center justify-center text-xl font-bold">
+              <i class="fa-solid fa-layer-group"></i>
+            </div>
+            <div>
+              <h4 class="text-xs uppercase tracking-widest text-[#04c5fa] font-bold">Primary Goal</h4>
+              <h5 class="text-xl font-bold">Full Stack Development</h5>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400">Building seamless end-to-end web applications combining powerful backends with sleek glassmorphic user interfaces.</p>
+        </div>
+
+        <div class="glass-card p-6 rounded-3xl relative overflow-hidden group hover:border-pink-500/50 transition-all">
+          <div class="absolute top-0 right-0 w-32 h-32 bg-gradient-to-br from-pink-500/20 to-transparent rounded-bl-full pointer-events-none"></div>
+          <div class="flex items-center gap-4 mb-3">
+            <div class="w-12 h-12 rounded-2xl bg-pink-500/10 text-pink-400 flex items-center justify-center text-xl font-bold">
+              <i class="fa-solid fa-brain"></i>
+            </div>
+            <div>
+              <h4 class="text-xs uppercase tracking-widest text-pink-400 font-bold">Future Vision</h4>
+              <h5 class="text-xl font-bold">AI / ML Engineer</h5>
+            </div>
+          </div>
+          <p class="text-sm text-slate-400">Exploring intelligent machine learning models, predictive data analysis with Python Pandas, and automated AI systems.</p>
+        </div>
+
+        <!-- Creative Highlight Box -->
+        <div class="glass-card p-6 rounded-3xl bg-gradient-to-r from-indigo-900/40 to-slate-900/60 border border-indigo-500/20">
+          <div class="flex items-center gap-3 mb-2 text-amber-400">
+            <i class="fa-solid fa-feather-pointed text-xl"></i>
+            <span class="font-bold text-sm tracking-wider uppercase">Poetry & Expression</span>
+          </div>
+          <p class="text-xs text-slate-300 italic">"Lines that touch hearts, algorithms that power minds." Bringing creative storytelling into technical execution.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS MATRIX SECTION -->
+  <section id="skills" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-12">
+      <h2 class="text-xs font-bold tracking-widest text-[#04c5fa] uppercase mb-2">Capabilities</h2>
+      <h3 class="text-3xl sm:text-4xl font-bold mb-4">Interactive <span class="text-gradient">Skill Matrix</span></h3>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Filter skills by category to explore my technical proficiency and soft-skill domain highlights.</p>
+    </div>
+
+    <!-- Skill Category Filter Buttons -->
+    <div class="flex flex-wrap justify-center gap-3 mb-10" id="skillFilters">
+      <button onclick="filterSkills('all')" class="skill-filter-btn active px-5 py-2 rounded-full text-sm font-semibold bg-[#04c5fa] text-slate-950 shadow-[0_0_15px_rgba(4,197,250,0.4)] transition-all">All Skills</button>
+      <button onclick="filterSkills('programming')" class="skill-filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white/5 border border-white/10 hover:border-[#04c5fa] text-slate-300 transition-all">Programming</button>
+      <button onclick="filterSkills('data')" class="skill-filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white/5 border border-white/10 hover:border-[#04c5fa] text-slate-300 transition-all">Data & SQL</button>
+      <button onclick="filterSkills('tools')" class="skill-filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white/5 border border-white/10 hover:border-[#04c5fa] text-slate-300 transition-all">Design & Tools</button>
+      <button onclick="filterSkills('soft')" class="skill-filter-btn px-5 py-2 rounded-full text-sm font-semibold bg-white/5 border border-white/10 hover:border-[#04c5fa] text-slate-300 transition-all">Soft Skills</button>
+    </div>
+
+    <!-- Skills Grid -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="skillsGrid">
+      
+      <!-- Python -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="programming data">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-brands fa-python text-3xl text-amber-400 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">Python</h4>
+              <span class="text-xs text-slate-400">Core & Data Handling</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-400/10 text-amber-400">Proficient</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-amber-400 to-amber-500 h-full rounded-full w-[85%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- C Language -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="programming">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-code text-3xl text-blue-400 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">C Language</h4>
+              <span class="text-xs text-slate-400">Logic & Functions</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-400/10 text-blue-400">Advanced</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-blue-400 to-blue-600 h-full rounded-full w-[90%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- C++ -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="programming">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-laptop-code text-3xl text-[#04c5fa] group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">C++ Programming</h4>
+              <span class="text-xs text-slate-400">OOP & Systems</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-[#04c5fa]/10 text-[#04c5fa]">Learning</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-[#04c5fa] to-cyan-500 h-full rounded-full w-[70%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- MySQL & RDBMS -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="data">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-database text-3xl text-emerald-400 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">MySQL / RDBMS</h4>
+              <span class="text-xs text-slate-400">Relational Databases</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-emerald-400/10 text-emerald-400">Intermediate</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-emerald-400 to-teal-500 h-full rounded-full w-[80%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- Python Pandas & Matplotlib -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="data">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-chart-pie text-3xl text-purple-400 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">Pandas & Matplotlib</h4>
+              <span class="text-xs text-slate-400">Data Analytics & Plotting</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-purple-400/10 text-purple-400">Practical</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-purple-400 to-indigo-500 h-full rounded-full w-[82%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- Canva & InShot -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="tools">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-pen-nib text-3xl text-pink-400 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">Canva & InShot</h4>
+              <span class="text-xs text-slate-400">Graphic & Video Editing</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-pink-400/10 text-pink-400">Creative</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-pink-400 to-rose-500 h-full rounded-full w-[88%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- Leadership & Public Speaking -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="soft">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-bullhorn text-3xl text-amber-300 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">Public Speaking & Leadership</h4>
+              <span class="text-xs text-slate-400">Keynote Presentation</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-amber-300/10 text-amber-300">Strong</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-amber-300 to-yellow-500 h-full rounded-full w-[92%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+      <!-- Digital Marketing -->
+      <div class="skill-card glass-card p-6 rounded-2xl border border-white/10 hover:border-[#04c5fa] transition-all group" data-category="tools soft">
+        <div class="flex items-center justify-between mb-4">
+          <div class="flex items-center gap-3">
+            <i class="fa-solid fa-share-nodes text-3xl text-cyan-400 group-hover:scale-110 transition-transform"></i>
+            <div>
+              <h4 class="font-bold text-lg">Digital Marketing</h4>
+              <span class="text-xs text-slate-400">Brand Rejuvenation & Social</span>
+            </div>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-cyan-400/10 text-cyan-400">Active</span>
+        </div>
+        <div class="w-full bg-white/10 h-2 rounded-full overflow-hidden">
+          <div class="bg-gradient-to-r from-cyan-400 to-blue-500 h-full rounded-full w-[78%] transition-all duration-1000"></div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS SHOWCASE SECTION -->
+  <section id="projects" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-xs font-bold tracking-widest text-[#04c5fa] uppercase mb-2">Portfolio</h2>
+      <h3 class="text-3xl sm:text-4xl font-bold">Featured <span class="text-gradient">Projects & Works</span></h3>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      
+      <!-- Project 1 -->
+      <div class="glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#04c5fa] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20">Python & Data</span>
+            <span class="text-xs text-slate-400"><i class="fa-regular fa-calendar"></i> CBSE Practical</span>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-[#04c5fa] transition-colors">Python Pandas & Matplotlib</h4>
+          <p class="text-slate-300 text-sm mb-6 line-clamp-3">Comprehensive CBSE practical file containing algorithmic Python implementations and custom chart visual analytics using Pandas DataFrames.</p>
+        </div>
+        <div class="p-6 pt-0">
+          <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_file-i-was-made-for-xiicbsepracticals-containspythonprog-activity-7361578805297061888-xKjB" target="_blank" class="w-full py-3 rounded-xl bg-[#04c5fa]/10 hover:bg-[#04c5fa] text-[#04c5fa] hover:text-slate-950 font-bold text-sm border border-[#04c5fa]/30 transition-all flex items-center justify-center gap-2">
+            <span>View Post Showcase</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 2 -->
+      <div class="glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#04c5fa] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-500/10 text-blue-400 border border-blue-500/20">BCA Sem 1</span>
+            <span class="text-xs text-slate-400"><i class="fa-regular fa-calendar"></i> Technical Presentation</span>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-[#04c5fa] transition-colors">Python Data Handling</h4>
+          <p class="text-slate-300 text-sm mb-6 line-clamp-3">In-depth semester presentation detailing Dataframe manipulation, data series indexing, cleaning, and structured technical data handling in Python.</p>
+        </div>
+        <div class="p-6 pt-0">
+          <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_python-pandas-df-activity-7400154521038974977-4d3U" target="_blank" class="w-full py-3 rounded-xl bg-[#04c5fa]/10 hover:bg-[#04c5fa] text-[#04c5fa] hover:text-slate-950 font-bold text-sm border border-[#04c5fa]/30 transition-all flex items-center justify-center gap-2">
+            <span>View Post Showcase</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 3 -->
+      <div class="glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#04c5fa] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-[#04c5fa]/10 text-[#04c5fa] border border-[#04c5fa]/20">C Programming</span>
+            <span class="text-xs text-slate-400"><i class="fa-regular fa-calendar"></i> Code Logic</span>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-[#04c5fa] transition-colors">User Defined Functions in C</h4>
+          <p class="text-slate-300 text-sm mb-6 line-clamp-3">Structured, modular C language programming codebase demonstrating functional decomposition, dynamic parameters, and recursive menu systems.</p>
+        </div>
+        <div class="p-6 pt-0">
+          <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_python-developer-akshatnaharjain-activity-7417925495008305152-BCc0" target="_blank" class="w-full py-3 rounded-xl bg-[#04c5fa]/10 hover:bg-[#04c5fa] text-[#04c5fa] hover:text-slate-950 font-bold text-sm border border-[#04c5fa]/30 transition-all flex items-center justify-center gap-2">
+            <span>View Post Showcase</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 4 -->
+      <div class="glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#04c5fa] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-purple-500/10 text-purple-400 border border-purple-500/20">Database & SQL</span>
+            <span class="text-xs text-slate-400"><i class="fa-regular fa-calendar"></i> RDBMS Slide-deck</span>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-[#04c5fa] transition-colors">MySQL RDBMS Architecture</h4>
+          <p class="text-slate-300 text-sm mb-6 line-clamp-3">Comprehensive relational database management design deck created with Canva & PowerPoint, highlighting keys, normalization, and relational schema.</p>
+        </div>
+        <div class="p-6 pt-0">
+          <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_powerpoint-canva-rdbms-activity-7368601724766425088-cF2M" target="_blank" class="w-full py-3 rounded-xl bg-[#04c5fa]/10 hover:bg-[#04c5fa] text-[#04c5fa] hover:text-slate-950 font-bold text-sm border border-[#04c5fa]/30 transition-all flex items-center justify-center gap-2">
+            <span>View Post Showcase</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+      <!-- Project 5 -->
+      <div class="glass-card rounded-3xl overflow-hidden border border-white/10 hover:border-[#04c5fa] transition-all duration-300 flex flex-col justify-between group hover:-translate-y-2 md:col-span-2 lg:col-span-1">
+        <div class="p-6">
+          <div class="flex items-center justify-between mb-4">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-pink-500/10 text-pink-400 border border-pink-500/20">Brand Strategy</span>
+            <span class="text-xs text-slate-400"><i class="fa-regular fa-calendar"></i> Aryan's BizHub</span>
+          </div>
+          <h4 class="text-xl font-bold mb-3 group-hover:text-[#04c5fa] transition-colors">TATA Nano Brand Rejuvenation</h4>
+          <p class="text-slate-300 text-sm mb-6 line-clamp-3">Corporate brand strategy pitch and reinvigoration campaign designed and presented at Aryan's BizHub showcase competition.</p>
+        </div>
+        <div class="p-6 pt-0">
+          <a href="https://www.linkedin.com/posts/akshat-nahar-jain-6b2a6a31a_on-15th-december-2025-we-presented-tata-activity-7406693428173926401-Jpl5" target="_blank" class="w-full py-3 rounded-xl bg-[#04c5fa]/10 hover:bg-[#04c5fa] text-[#04c5fa] hover:text-slate-950 font-bold text-sm border border-[#04c5fa]/30 transition-all flex items-center justify-center gap-2">
+            <span>View Post Showcase</span>
+            <i class="fa-solid fa-arrow-up-right-from-square text-xs"></i>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- MEDIA HUB (PHOTOS, VIDEOS, CERTIFICATES) -->
+  <section id="gallery" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-xs font-bold tracking-widest text-[#04c5fa] uppercase mb-2">Visual Experience</h2>
+      <h3 class="text-3xl sm:text-4xl font-bold mb-4">Media & <span class="text-gradient">Certificates Hub</span></h3>
+      <p class="text-slate-400 max-w-xl mx-auto text-sm sm:text-base">Explore academic photos, recorded video presentations, and verified certificate credentials.</p>
+    </div>
+
+    <!-- Media Tabs -->
+    <div class="flex justify-center border-b border-white/10 mb-10">
+      <div class="flex gap-4 sm:gap-8">
+        <button onclick="switchMediaTab('photos')" id="tabPhotosBtn" class="media-tab-btn active pb-4 font-bold text-base text-[#04c5fa] border-b-2 border-[#04c5fa] transition-all flex items-center gap-2">
+          <i class="fa-regular fa-image"></i>
+          <span>Academic Photos</span>
+        </button>
+        <button onclick="switchMediaTab('videos')" id="tabVideosBtn" class="media-tab-btn pb-4 font-semibold text-base text-slate-400 border-b-2 border-transparent hover:text-white transition-all flex items-center gap-2">
+          <i class="fa-solid fa-video"></i>
+          <span>Video Gallery</span>
+        </button>
+        <button onclick="switchMediaTab('certs')" id="tabCertsBtn" class="media-tab-btn pb-4 font-semibold text-base text-slate-400 border-b-2 border-transparent hover:text-white transition-all flex items-center gap-2">
+          <i class="fa-solid fa-certificate"></i>
+          <span>Certificates</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- TAB 1: ACADEMIC PHOTOS GALLERY -->
+    <div id="mediaPhotos" class="media-content">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('july.jpeg', 'Academic Photo - July Showcase')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="july.jpeg" alt="Academic July" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/08080e/04c5fa?text=Academic+July'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent opacity-0 group-hover:opacity-80 transition-opacity flex items-end p-4">
+              <span class="text-xs font-bold text-[#04c5fa]"><i class="fa-solid fa-magnifying-glass-plus"></i> View High-Res</span>
+            </div>
+          </div>
+          <div class="p-4 bg-white/5">
+            <h5 class="font-bold text-sm text-center">Academic Session - July</h5>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('nov.jpeg', 'Academic Photo - November Showcase')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="nov.jpeg" alt="Academic Nov" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/08080e/04c5fa?text=Academic+November'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent opacity-0 group-hover:opacity-80 transition-opacity flex items-end p-4">
+              <span class="text-xs font-bold text-[#04c5fa]"><i class="fa-solid fa-magnifying-glass-plus"></i> View High-Res</span>
+            </div>
+          </div>
+          <div class="p-4 bg-white/5">
+            <h5 class="font-bold text-sm text-center">Academic Session - November</h5>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('dec.jpeg', 'Academic Photo - December Showcase')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="dec.jpeg" alt="Academic Dec" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/08080e/04c5fa?text=Academic+December'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent opacity-0 group-hover:opacity-80 transition-opacity flex items-end p-4">
+              <span class="text-xs font-bold text-[#04c5fa]"><i class="fa-solid fa-magnifying-glass-plus"></i> View High-Res</span>
+            </div>
+          </div>
+          <div class="p-4 bg-white/5">
+            <h5 class="font-bold text-sm text-center">Academic Session - December</h5>
+          </div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('jan.jpeg', 'Academic Photo - January Showcase')">
+          <div class="relative h-72 overflow-hidden">
+            <img src="jan.jpeg" alt="Academic Jan" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" onerror="this.src='https://placehold.co/600x800/08080e/04c5fa?text=Academic+January'" />
+            <div class="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent opacity-0 group-hover:opacity-80 transition-opacity flex items-end p-4">
+              <span class="text-xs font-bold text-[#04c5fa]"><i class="fa-solid fa-magnifying-glass-plus"></i> View High-Res</span>
+            </div>
+          </div>
+          <div class="p-4 bg-white/5">
+            <h5 class="font-bold text-sm text-center">Academic Session - January</h5>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TAB 2: VIDEOS SHOWCASE -->
+    <div id="mediaVideos" class="media-content hidden">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
         
-        <div class="video-wrapper">
-          <video src="C%20code%20188.mp4" controls></video>
-          <div class="video-title">C Code Menu Driven Program</div>
+        <div class="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col">
+          <div class="relative bg-black aspect-video flex items-center justify-center">
+            <video src="C%20code%20188.mp4" controls class="w-full h-full object-cover"></video>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-[#04c5fa] uppercase tracking-wider">C Programming</span>
+              <h5 class="font-bold text-base mt-1">C Code Menu Driven Program</h5>
+            </div>
+          </div>
         </div>
 
-        <div class="video-wrapper">
-          <video src="Brand%20Rejuvenation%20Competition-Aryan's%20BizHub.mp4" controls></video>
-          <div class="video-title">Brand Rejuvenation Competition - Aryan's BizHub</div>
+        <div class="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col">
+          <div class="relative bg-black aspect-video flex items-center justify-center">
+            <video src="Brand%20Rejuvenation%20Competition-Aryan's%20BizHub.mp4" controls class="w-full h-full object-cover"></video>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-pink-400 uppercase tracking-wider">Competition</span>
+              <h5 class="font-bold text-base mt-1">Brand Rejuvenation Competition - Aryan's BizHub</h5>
+            </div>
+          </div>
         </div>
 
-        <div class="video-wrapper">
-          <video src="PyData Handling project.mp4" controls></video>
-          <div class="video-title">PyData Handling Project</div>
+        <div class="glass-card rounded-3xl overflow-hidden border border-white/10 flex flex-col">
+          <div class="relative bg-black aspect-video flex items-center justify-center">
+            <video src="PyData%20Handling%20project.mp4" controls class="w-full h-full object-cover"></video>
+          </div>
+          <div class="p-5 flex-1 flex flex-col justify-between">
+            <div>
+              <span class="text-xs font-bold text-emerald-400 uppercase tracking-wider">Python Pandas</span>
+              <h5 class="font-bold text-base mt-1">PyData Handling Project Walkthrough</h5>
+            </div>
+          </div>
         </div>
 
       </div>
-    </section>
-  </main>
+    </div>
 
-  <main>
-    <section id="certificates" class="glass-panel">
-      <h2>Certificates & Achievements</h2>
-      <div class="image-gallery">
-        <img src="C5.jpeg" alt="HRM" onclick="openLightbox(this.src)">
-        <img src="c1.jpeg" alt="Certificate 1" onclick="openLightbox(this.src)">
-        <img src="c2.jpeg" alt="Certificate 2" onclick="openLightbox(this.src)">
-        <img src="c3.jpeg" alt="Certificate 3" onclick="openLightbox(this.src)">
-        <img src="o1.jpeg" alt="Other Image 1" onclick="openLightbox(this.src)">
-        <img src="o2.jpeg" alt="Other Image 2" onclick="openLightbox(this.src)">
-        <img src="o3.jpeg" alt="Other Image 3" onclick="openLightbox(this.src)">
+    <!-- TAB 3: CERTIFICATES & ACHIEVEMENTS -->
+    <div id="mediaCerts" class="media-content hidden">
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+        
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('C5.jpeg', 'Human Resource Management Certificate')">
+          <img src="C5.jpeg" alt="HRM Certificate" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Certificate+HRM'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">HRM Certification</div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('c1.jpeg', 'Certificate Credential 1')">
+          <img src="c1.jpeg" alt="Certificate 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Certificate+1'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">Academic Achievement I</div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('c2.jpeg', 'Certificate Credential 2')">
+          <img src="c2.jpeg" alt="Certificate 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Certificate+2'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">Academic Achievement II</div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('c3.jpeg', 'Certificate Credential 3')">
+          <img src="c3.jpeg" alt="Certificate 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Certificate+3'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">Technical Qualification</div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('o1.jpeg', 'Event Award 1')">
+          <img src="o1.jpeg" alt="Other Image 1" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Award+1'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">Competition Recognition</div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('o2.jpeg', 'Event Award 2')">
+          <img src="o2.jpeg" alt="Other Image 2" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Award+2'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">Event Showcase</div>
+        </div>
+
+        <div class="glass-card rounded-2xl overflow-hidden border border-white/10 group cursor-pointer" onclick="openLightbox('o3.jpeg', 'Event Award 3')">
+          <img src="o3.jpeg" alt="Other Image 3" class="w-full h-48 object-cover group-hover:scale-105 transition-transform" onerror="this.src='https://placehold.co/400x300/08080e/04c5fa?text=Award+3'" />
+          <div class="p-3 text-center text-xs font-medium text-slate-300">Leadership Honor</div>
+        </div>
+
       </div>
-    </section>
-  </main>
+    </div>
+  </section>
 
-  <main>
-    <section id="social-media" class="glass-panel">
-      <h2>Social Profiles</h2>
-      <div class="grid">
-        <div class="card">
-          <img src="a.png" alt="LinkedIn Profile">
-          <a href="https://www.linkedin.com/in/akshatnahar-jain-6b2a6a31a/" target="_blank" class="btn" style="background:linear-gradient(135deg, #0A66C2, #004182);"><i class="fa-brands fa-linkedin"></i> LinkedIn</a>
+  <!-- SOCIAL HUB & LOCATION CONNECT -->
+  <section id="contact" class="py-20 px-4 max-w-7xl mx-auto">
+    <div class="text-center mb-16">
+      <h2 class="text-xs font-bold tracking-widest text-[#04c5fa] uppercase mb-2">Networking</h2>
+      <h3 class="text-3xl sm:text-4xl font-bold">Social Profiles & <span class="text-gradient">Contact Hub</span></h3>
+    </div>
+
+    <!-- Social Brand Grid -->
+    <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-16">
+      
+      <a href="https://www.linkedin.com/in/akshatnahar-jain-6b2a6a31a" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-[#0A66C2] flex flex-col items-center justify-center gap-3 group transition-all hover:-translate-y-2">
+        <div class="w-12 h-12 rounded-xl bg-[#0A66C2]/10 text-[#0A66C2] flex items-center justify-center text-2xl group-hover:bg-[#0A66C2] group-hover:text-white transition-all">
+          <i class="fa-brands fa-linkedin-in"></i>
         </div>
-        <div class="card">
-          <img src="b.png" alt="Instagram Profile">
-          <a href="https://www.instagram.com/akshatnahar.in/" target="_blank" class="btn" style="background:linear-gradient(135deg, #c20a75, #833ab4);"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <span class="font-semibold text-sm">LinkedIn</span>
+      </a>
+
+      <a href="https://github.com/akshatjain30100-creator/C-Language-Prgt" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-slate-300 flex flex-col items-center justify-center gap-3 group transition-all hover:-translate-y-2">
+        <div class="w-12 h-12 rounded-xl bg-white/10 text-white flex items-center justify-center text-2xl group-hover:bg-white group-hover:text-black transition-all">
+          <i class="fa-brands fa-github"></i>
         </div>
-        <div class="card">
-          <img src="c.png" alt="Threads Profile">
-          <a href="https://www.threads.com/@akshatnahar.in" target="_blank" class="btn" style="background:linear-gradient(135deg, #292828, #111111);"><i class="fa-brands fa-threads"></i> Threads</a>
+        <span class="font-semibold text-sm">GitHub</span>
+      </a>
+
+      <a href="https://www.instagram.com/akshatnahar.in/" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-pink-500 flex flex-col items-center justify-center gap-3 group transition-all hover:-translate-y-2">
+        <div class="w-12 h-12 rounded-xl bg-pink-500/10 text-pink-500 flex items-center justify-center text-2xl group-hover:bg-gradient-to-tr group-hover:from-amber-500 group-hover:via-pink-500 group-hover:to-purple-600 group-hover:text-white transition-all">
+          <i class="fa-brands fa-instagram"></i>
         </div>
-        <div class="card">
-          <img src="d.png" alt="GitHub Repository">
-          <a href="https://github.com/akshatjain30100-creator/C-Language-Prgt" target="_blank" class="btn" style="background:linear-gradient(135deg, #24292e, #1a1e22);"><i class="fa-brands fa-github"></i> GitHub</a>
+        <span class="font-semibold text-sm">Instagram</span>
+      </a>
+
+      <a href="https://www.threads.com/@akshatnahar.in" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-slate-400 flex flex-col items-center justify-center gap-3 group transition-all hover:-translate-y-2">
+        <div class="w-12 h-12 rounded-xl bg-white/10 text-slate-200 flex items-center justify-center text-2xl group-hover:bg-slate-200 group-hover:text-black transition-all">
+          <i class="fa-brands fa-threads"></i>
         </div>
-        <div class="card">
-          <img src="e.png" alt="X Profile">
-          <a href="https://x.com/AkshatJain81893" target="_blank" class="btn" style="background:linear-gradient(135deg, #1da1f2, #0d8ecf);"><i class="fa-brands fa-x-twitter"></i> X / Twitter</a>
+        <span class="font-semibold text-sm">Threads</span>
+      </a>
+
+      <a href="https://x.com/AkshatJain81893" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-[#04c5fa] flex flex-col items-center justify-center gap-3 group transition-all hover:-translate-y-2">
+        <div class="w-12 h-12 rounded-xl bg-[#04c5fa]/10 text-[#04c5fa] flex items-center justify-center text-2xl group-hover:bg-[#04c5fa] group-hover:text-slate-950 transition-all">
+          <i class="fa-brands fa-x-twitter"></i>
         </div>
-        <div class="card">
-          <img src="f.png" alt="Facebook Profile">
-          <a href="https://www.facebook.com/profile.php?id=61576915678488" target="_blank" class="btn" style="background:linear-gradient(135deg, #1877f2, #0d5cb6);"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <span class="font-semibold text-sm">X / Twitter</span>
+      </a>
+
+      <a href="https://www.facebook.com/profile.php?id=61576915678488" target="_blank" class="glass-card p-5 rounded-2xl border border-white/10 hover:border-[#1877F2] flex flex-col items-center justify-center gap-3 group transition-all hover:-translate-y-2">
+        <div class="w-12 h-12 rounded-xl bg-[#1877F2]/10 text-[#1877F2] flex items-center justify-center text-2xl group-hover:bg-[#1877F2] group-hover:text-white transition-all">
+          <i class="fa-brands fa-facebook-f"></i>
+        </div>
+        <span class="font-semibold text-sm">Facebook</span>
+      </a>
+
+    </div>
+
+    <!-- Contact Form & Map Section -->
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+      
+      <!-- Interactive Form -->
+      <div class="lg:col-span-7 glass-card p-8 rounded-3xl border border-white/10">
+        <h4 class="text-2xl font-bold mb-2">Send a Direct Message</h4>
+        <p class="text-sm text-slate-400 mb-6">Have a project, query, or opportunity? Drop me a line below!</p>
+
+        <form id="contactForm" onsubmit="handleFormSubmit(event)" class="space-y-4">
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Your Name</label>
+            <input type="text" required placeholder="John Doe" class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-[#04c5fa] focus:outline-none text-white text-sm transition-colors" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Email Address</label>
+            <input type="email" required placeholder="john@example.com" class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-[#04c5fa] focus:outline-none text-white text-sm transition-colors" />
+          </div>
+
+          <div>
+            <label class="block text-xs font-semibold uppercase tracking-wider text-slate-300 mb-2">Message</label>
+            <textarea rows="4" required placeholder="Type your message here..." class="w-full px-4 py-3.5 rounded-xl bg-white/5 border border-white/10 focus:border-[#04c5fa] focus:outline-none text-white text-sm transition-colors resize-none"></textarea>
+          </div>
+
+          <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#04c5fa] to-indigo-600 text-slate-950 font-bold text-base hover:shadow-[0_0_25px_rgba(4,197,250,0.5)] active:scale-98 transition-all flex items-center justify-center gap-2">
+            <span>Send Message</span>
+            <i class="fa-solid fa-paper-plane text-xs"></i>
+          </button>
+        </form>
+      </div>
+
+      <!-- Map & Location Details -->
+      <div class="lg:col-span-5 glass-card p-8 rounded-3xl border border-white/10 flex flex-col justify-between h-full">
+        <div>
+          <div class="flex items-center gap-3 mb-4">
+            <div class="w-10 h-10 rounded-xl bg-[#04c5fa]/10 text-[#04c5fa] flex items-center justify-center text-xl">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div>
+              <h5 class="font-bold text-base">Location</h5>
+              <p class="text-xs text-slate-400">Madar Gate, Ajmer, Rajasthan, India</p>
+            </div>
+          </div>
+
+          <div class="w-full rounded-2xl overflow-hidden border border-white/10 shadow-inner mb-6">
+            <iframe 
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.24719602494!2d74.63287817542318!3d26.45746117692138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be71c1259038d%3A0x387b34445ffb8a32!2sMadar%20Gate!5e0!3m2!1sen!2sin!4v1716418000000!5m2!1sen!2sin"
+              class="w-full h-64 border-0 filter grayscale invert contrast-125 opacity-90 hover:opacity-100 transition-opacity" 
+              loading="lazy" 
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-white/5 border border-white/10">
+          <p class="text-xs text-slate-300 text-center">
+            <i class="fa-solid fa-bolt text-amber-400 mr-1"></i> Quick Connect via <a href="https://www.linkedin.com/in/akshatnahar-jain-6b2a6a31a" target="_blank" class="text-[#04c5fa] font-semibold underline">LinkedIn Direct Message</a>
+          </p>
         </div>
       </div>
-    </section>
 
-    <section class="map-wrapper glass-panel">
-      <h2>Our Location</h2>
-      <div class="map-container">
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3572.24719602494!2d74.63287817542318!3d26.45746117692138!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x396be71c1259038d%3A0x387b34445ffb8a32!2sMadar%20Gate!5e0!3m2!1sen!2sin!4v1716418000000!5m2!1sen!2sin"
-          loading="lazy" 
-          referrerpolicy="no-referrer-when-downgrade"
-          allowfullscreen>
-        </iframe>
+    </div>
+  </section>
+
+  <!-- LIGHTBOX MODAL -->
+  <div id="lightbox" class="lightbox-modal fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 opacity-0 pointer-events-none">
+    <button onclick="closeLightbox()" class="absolute top-6 right-6 w-12 h-12 rounded-full bg-white/10 text-white hover:bg-[#04c5fa] hover:text-slate-950 flex items-center justify-center text-xl transition-all z-10">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <div class="max-w-4xl max-h-[90vh] flex flex-col items-center">
+      <img id="lightboxImg" src="" alt="Enlarged view" class="max-w-full max-h-[80vh] object-contain rounded-2xl border border-white/20 shadow-2xl" />
+      <p id="lightboxCaption" class="mt-4 text-center font-medium text-slate-300 text-sm sm:text-base"></p>
+    </div>
+  </div>
+
+  <!-- TOAST NOTIFICATION -->
+  <div id="toast" class="fixed bottom-6 right-6 z-50 px-6 py-4 rounded-2xl glass-card border border-[#04c5fa] text-white flex items-center gap-3 transform translate-y-24 opacity-0 transition-all duration-300 shadow-2xl">
+    <i class="fa-solid fa-circle-check text-[#04c5fa] text-xl"></i>
+    <span id="toastMsg" class="font-medium text-sm">Message sent successfully!</span>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="py-12 border-t border-white/10 bg-[#040408] text-center text-slate-400 text-sm relative z-10">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <p>© 2026 Akshat Nahar. Built with Akshat Digital Intelligence.</p>
+      <div class="flex items-center gap-6">
+        <a href="#hero" class="hover:text-[#04c5fa] transition-colors"><i class="fa-solid fa-angle-up mr-1"></i> Back to Top</a>
       </div>
-    </section>
-  </main>
+    </div>
+  </footer>
 
-<section id="contact" class="glass-panel">
-  <h2>Contact</h2>
-  <p>Let's connect! Reach me directly via <a href="https://www.linkedin.com/in/akshat-nahar-jain-6b2a6a31a" target="_blank">LinkedIn <i class="fa-solid fa-arrow-up-right-from-square" style="font-size:0.8rem;"></i></a></p>
-</section>
+  <!-- JAVASCRIPT LOGIC -->
+  <script>
+    /* TYPING ANIMATION IN HERO */
+    const roles = ["IT Student", "Analyst", "C++ / Java Developer", "Poet", "Leader"];
+    let roleIndex = 0;
+    let charIndex = 0;
+    let isDeleting = false;
+    const typingElement = document.getElementById("typingText");
 
-<footer>
-  © 2026 Akshat Nahar. Built with <span>Akshat Digital Intelligence</span>[cite: 1].
-</footer>
+    function typeEffect() {
+      const currentRole = roles[roleIndex];
+      
+      if (isDeleting) {
+        typingElement.textContent = currentRole.substring(0, charIndex - 1);
+        charIndex--;
+      } else {
+        typingElement.textContent = currentRole.substring(0, charIndex + 1);
+        charIndex++;
+      }
 
-<script>
-  const menuToggle = document.getElementById('menuToggle');
-  const overlayMenu = document.getElementById('overlayMenu');
-  const projectCloseTrigger = document.querySelector('.overlay-close-trigger');
+      let speed = isDeleting ? 50 : 100;
 
-  // Toggle overlay appearance on menu click
-  menuToggle.addEventListener('click', () => {
-    menuToggle.classList.toggle('active');
-    overlayMenu.classList.toggle('open');
-  });
+      if (!isDeleting && charIndex === currentRole.length) {
+        speed = 2000; // Pause at end
+        isDeleting = true;
+      } else if (isDeleting && charIndex === 0) {
+        isDeleting = false;
+        roleIndex = (roleIndex + 1) % roles.length;
+        speed = 500;
+      }
 
-  // Automatically close menu when links are clicked
-  document.querySelectorAll('.overlay-menu a').forEach(link => {
-    link.addEventListener('click', () => {
-      menuToggle.classList.remove('active');
-      overlayMenu.classList.remove('open');
+      setTimeout(typeEffect, speed);
+    }
+
+    /* PARTICLE BACKGROUND CANVAS EFFECT */
+    const canvas = document.getElementById('bgCanvas');
+    const ctx = canvas.getContext('2d');
+    let particles = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    class Particle {
+      constructor() {
+        this.x = Math.random() * canvas.width;
+        this.y = Math.random() * canvas.height;
+        this.size = Math.random() * 2 + 0.5;
+        this.speedX = (Math.random() - 0.5) * 0.5;
+        this.speedY = (Math.random() - 0.5) * 0.5;
+        this.opacity = Math.random() * 0.5 + 0.2;
+      }
+
+      update() {
+        this.x += this.speedX;
+        this.y += this.speedY;
+
+        if (this.x < 0 || this.x > canvas.width) this.speedX *= -1;
+        if (this.y < 0 || this.y > canvas.height) this.speedY *= -1;
+      }
+
+      draw() {
+        ctx.fillStyle = `rgba(4, 197, 250, ${this.opacity})`;
+        ctx.beginPath();
+        ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+        ctx.fill();
+      }
+    }
+
+    function initParticles() {
+      particles = [];
+      const count = Math.floor((canvas.width * canvas.height) / 18000);
+      for (let i = 0; i < count; i++) {
+        particles.push(new Particle());
+      }
+    }
+
+    function animateParticles() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      particles.forEach(p => {
+        p.update();
+        p.draw();
+      });
+      requestAnimationFrame(animateParticles);
+    }
+
+    /* MOBILE DRAWER TOGGLE */
+    const menuToggle = document.getElementById('menuToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const bar1 = document.getElementById('bar1');
+    const bar2 = document.getElementById('bar2');
+    const bar3 = document.getElementById('bar3');
+    let menuOpen = false;
+
+    menuToggle.addEventListener('click', () => {
+      menuOpen = !menuOpen;
+      if (menuOpen) {
+        mobileDrawer.classList.remove('translate-x-full');
+        bar1.classList.add('rotate-45', 'translate-y-2');
+        bar2.classList.add('opacity-0');
+        bar3.classList.add('-rotate-45', '-translate-y-2');
+      } else {
+        mobileDrawer.classList.add('translate-x-full');
+        bar1.classList.remove('rotate-45', 'translate-y-2');
+        bar2.classList.remove('opacity-0');
+        bar3.classList.remove('-rotate-45', '-translate-y-2');
+      }
     });
-  });
 
-  // Lightbox functionality
-  function openLightbox(src) {
-    const modal = document.getElementById('lightboxModal');
-    const modalImg = document.getElementById('lightboxImg');
-    modal.style.display = 'flex';
-    modalImg.src = src;
-  }
+    document.querySelectorAll('.mobile-link').forEach(link => {
+      link.addEventListener('click', () => {
+        menuOpen = false;
+        mobileDrawer.classList.add('translate-x-full');
+        bar1.classList.remove('rotate-45', 'translate-y-2');
+        bar2.classList.remove('opacity-0');
+        bar3.classList.remove('-rotate-45', '-translate-y-2');
+      });
+    });
 
-  function closeLightbox() {
-    document.getElementById('lightboxModal').style.display = 'none';
-  }
-</script>
+    /* SKILL MATRIX FILTER */
+    function filterSkills(category) {
+      const buttons = document.querySelectorAll('.skill-filter-btn');
+      buttons.forEach(btn => {
+        btn.classList.remove('active', 'bg-[#04c5fa]', 'text-slate-950', 'shadow-[0_0_15px_rgba(4,197,250,0.4)]');
+        btn.classList.add('bg-white/5', 'text-slate-300');
+      });
+
+      event.target.classList.add('active', 'bg-[#04c5fa]', 'text-slate-950', 'shadow-[0_0_15px_rgba(4,197,250,0.4)]');
+      event.target.classList.remove('bg-white/5', 'text-slate-300');
+
+      const cards = document.querySelectorAll('.skill-card');
+      cards.forEach(card => {
+        if (category === 'all' || card.dataset.category.includes(category)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    /* MEDIA TAB SWITCHING */
+    function switchMediaTab(tab) {
+      document.querySelectorAll('.media-tab-btn').forEach(btn => {
+        btn.classList.remove('active', 'text-[#04c5fa]', 'border-[#04c5fa]');
+        btn.classList.add('text-slate-400', 'border-transparent');
+      });
+
+      document.querySelectorAll('.media-content').forEach(content => {
+        content.classList.add('hidden');
+      });
+
+      if (tab === 'photos') {
+        document.getElementById('tabPhotosBtn').classList.add('active', 'text-[#04c5fa]', 'border-[#04c5fa]');
+        document.getElementById('mediaPhotos').classList.remove('hidden');
+      } else if (tab === 'videos') {
+        document.getElementById('tabVideosBtn').classList.add('active', 'text-[#04c5fa]', 'border-[#04c5fa]');
+        document.getElementById('mediaVideos').classList.remove('hidden');
+      } else if (tab === 'certs') {
+        document.getElementById('tabCertsBtn').classList.add('active', 'text-[#04c5fa]', 'border-[#04c5fa]');
+        document.getElementById('mediaCerts').classList.remove('hidden');
+      }
+    }
+
+    /* LIGHTBOX LOGIC */
+    function openLightbox(src, caption) {
+      const modal = document.getElementById('lightbox');
+      const img = document.getElementById('lightboxImg');
+      const cap = document.getElementById('lightboxCaption');
+      
+      img.src = src;
+      cap.textContent = caption || '';
+      modal.classList.remove('opacity-0', 'pointer-events-none');
+    }
+
+    function closeLightbox() {
+      const modal = document.getElementById('lightbox');
+      modal.classList.add('opacity-0', 'pointer-events-none');
+    }
+
+    /* RESUME / INFO DOWNLOAD SIMULATION */
+    function downloadCV() {
+      showToast("Redirecting to profile details & resume showcase...");
+      setTimeout(() => {
+        window.open('https://www.linkedin.com/in/akshatnahar-jain-6b2a6a31a', '_blank');
+      }, 1000);
+    }
+
+    /* FORM SUBMISSION & TOAST FEEDBACK */
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      showToast("Thank you! Your message has been dispatched to Akshat.");
+      document.getElementById('contactForm').reset();
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      const toastMsg = document.getElementById('toastMsg');
+      toastMsg.textContent = msg;
+      
+      toast.classList.remove('translate-y-24', 'opacity-0');
+      setTimeout(() => {
+        toast.classList.add('translate-y-24', 'opacity-0');
+      }, 3500);
+    }
+
+    /* INITIALIZATION ON WINDOW LOAD */
+    window.addEventListener('resize', () => {
+      resizeCanvas();
+      initParticles();
+    });
+
+    window.onload = function() {
+      typeEffect();
+      resizeCanvas();
+      initParticles();
+      animateParticles();
+    };
+  </script>
 </body>
 </html>
